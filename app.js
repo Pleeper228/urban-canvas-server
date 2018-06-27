@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const app = express();
 
@@ -10,9 +12,15 @@ const art_card = require('./api/art_card');
 
 
 app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors({
+  origin: 'https://localhost:3000',
+  optionsSuccessStatus: 200
+}))
 
 app.use('/api/v1/art-cards', art_card);
 
