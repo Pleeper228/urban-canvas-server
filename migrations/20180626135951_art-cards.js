@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
     table.text('imgUrl')
     table.text('description')
     table.text('location')
+    table.float('lat')
+    table.float('lng')
   })
 };
 
