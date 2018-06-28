@@ -8,8 +8,10 @@ function validArtCard(artCard) {
     const hasImgUrl = typeof artCard.imgUrl == 'string' && artCard.imgUrl.trim() != ""
     const hasDescription = typeof artCard.description == 'string' && artCard.description.trim() != ""
     const hasLocation = typeof artCard.location == 'string' && artCard.location.trim() != "" 
+    const hasLat = typeof artCard.lat == 'number' && artCard.lat >= -90 && artCard.lat <= 90
+    const hasLng = typeof artCard.lng == 'number' && artCard.lng >= -90 && artCard.lng <= 90
 
-    return hasImgUrl && hasDescription && hasLocation
+    return hasImgUrl && hasDescription && hasLocation && hasLat && hasLng
 }
 
 function isValidId(req, res, next) {
